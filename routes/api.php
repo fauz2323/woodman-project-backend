@@ -15,6 +15,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout',[App\Http\Controllers\Api\AuthApiController::class,'logout']);
         Route::get('/auth',[App\Http\Controllers\Api\AuthApiController::class,'auth']);
+        Route::post('/password/update',[App\Http\Controllers\Api\AuthApiController::class,'changePassword']);
 
         Route::get('/category',[App\Http\Controllers\Api\ProductApiController::class,'getCategory']);
         Route::get('/product',[App\Http\Controllers\Api\ProductApiController::class,'getProduct']);

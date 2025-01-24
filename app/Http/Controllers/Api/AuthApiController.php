@@ -68,4 +68,25 @@ class AuthApiController extends Controller
             'user' => $user,
         ]);
     }
+
+    function changePassword(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        if (Hash::check($request->old_password, $user->password)) {
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            return response()->json([
+                'message' => 'Password changed successfully',
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'Old password is incorrect',
+            ], 401);
+        }
+    }
 }
