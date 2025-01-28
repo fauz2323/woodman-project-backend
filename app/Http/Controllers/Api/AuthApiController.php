@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthApiController extends Controller
 {
-    function login(Request $request) {
+    function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -30,10 +31,11 @@ class AuthApiController extends Controller
         }
     }
 
-    function register(Request $request) {
+    function register(Request $request)
+    {
         $request->validate([
             'name' => 'required',
-            'phone'=> 'required',
+            'phone' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required'
         ]);
@@ -43,6 +45,7 @@ class AuthApiController extends Controller
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->role = 'user';
         $user->save();
 
         $token = $user->createToken('auth')->plainTextToken;
@@ -53,14 +56,16 @@ class AuthApiController extends Controller
         ]);
     }
 
-    function logout(Request $request) {
+    function logout(Request $request)
+    {
         $request->user()->currentAccessToken()->delete();
         return response()->json([
             'message' => 'Logout successful',
         ]);
     }
 
-    function auth() {
+    function auth()
+    {
         $user = User::find(auth()->user()->id);
 
         return response()->json([
@@ -69,7 +74,8 @@ class AuthApiController extends Controller
         ]);
     }
 
-    function changePassword(Request $request) {
+    function changePassword(Request $request)
+    {
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required',

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $guarded =[];
+    protected $guarded = [];
 
     public function category()
     {
@@ -16,5 +16,15 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class, 'product_id', 'id');
+    }
+
+    /**
+     * Get all of the userProductItem for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userOrderItem()
+    {
+        return $this->hasMany(UserOrderItem::class, 'product_id', 'id');
     }
 }
