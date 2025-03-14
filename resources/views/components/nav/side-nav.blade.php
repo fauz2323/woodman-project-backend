@@ -20,10 +20,31 @@
             <div class="collapse" id="sidebarPages">
                 <ul class="side-nav-second-level">
                     <li>
+                        <a href="{{route('admin.account')}}">Account</a>
+                    </li>
+                    <li>
                         <a href="pages-contact-list.html">Product</a>
                     </li>
                     <li>
                         <a href="pages-contact-list.html">Daily Report</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarPages2" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                <i class="ri-pages-line"></i>
+                <span> Payment </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarPages2">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="pages-contact-list.html">Payment Status</a>
+                    </li>
+                    <li>
+                        <a href="pages-contact-list.html">Payment Report</a>
                     </li>
                 </ul>
             </div>
