@@ -23,10 +23,7 @@
                         <a href="{{route('admin.account')}}">Account</a>
                     </li>
                     <li>
-                        <a href="pages-contact-list.html">Product</a>
-                    </li>
-                    <li>
-                        <a href="pages-contact-list.html">Daily Report</a>
+                        <a href="{{route('admin.product')}}">Product</a>
                     </li>
                 </ul>
             </div>
@@ -41,7 +38,7 @@
             <div class="collapse" id="sidebarPages2">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="pages-contact-list.html">Payment Status</a>
+                        <a href="pages-contact-list.html">Pending Transaction</a>
                     </li>
                     <li>
                         <a href="pages-contact-list.html">Payment Report</a>
