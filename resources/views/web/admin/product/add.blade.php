@@ -23,7 +23,7 @@
                 </div>
             </div>
             <!-- end page title -->
-
+            <livewire:dashboard.form.product-form />
         </div>
         <!-- container -->
     </div>

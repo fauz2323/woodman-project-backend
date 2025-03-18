@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="input-group">
-                        <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control"
+                        <input type="text" id="example-input1-group2" wire:model.live.debounce.200ms='search' name="example-input1-group2" class="form-control"
                             placeholder="Search">
                         <span class="input-group-append">
                             <button type="button" class="btn btn-primary rounded-start-0"><i
