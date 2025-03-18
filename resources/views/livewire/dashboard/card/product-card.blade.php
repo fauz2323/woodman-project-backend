@@ -9,7 +9,7 @@
                         <span class="input-group-append">
                             <button type="button" class="btn btn-primary rounded-start-0"><i
                                     class="ri-search-line fs-16"></i></button>
-                            <button type="button" class="btn btn-success rounded-start-0"><i
+                            <button type="button" wire:click='add' class="btn btn-success rounded-start-0"><i
                                     class="ri-folder-add-line fs-16"></i></button>
                         </span>
                     </div>

@@ -21,4 +21,8 @@ class ProductCard extends Component
     public function getData($search) {
         return Product::where('name', 'like', '%'.$search.'%')->with('images')->paginate(10);
     }
+
+    public function add() {
+        return redirect()->route('admin.product.add');
+    }
 }
