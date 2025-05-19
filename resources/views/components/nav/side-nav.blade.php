@@ -38,7 +38,7 @@
             <div class="collapse" id="sidebarPages2">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="pages-contact-list.html">Pending Transaction</a>
+                        <a href="{{route('admin.payment.pending')}}">Pending Transaction</a>
                     </li>
                     <li>
                         <a href="pages-contact-list.html">Payment Report</a>

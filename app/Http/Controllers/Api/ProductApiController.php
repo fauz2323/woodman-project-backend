@@ -35,9 +35,7 @@ class ProductApiController extends Controller
     }
 
     function getProduct() {
-        $products = Product::with(['images'=>function($query){
-            $query->first();
-        }])->get();
+        $products = Product::with('images')->get();
 
         return response()->json([
             'message' => 'Data product berhasil diambil',
@@ -50,7 +48,7 @@ class ProductApiController extends Controller
             'uuid'=>'required'
         ]);
 
-        $product = Product::where('uuid', $request->uuid)->with('category','images')->first();
+        $product = Product::where('uuid', $request->uuid)->with('images')->first();
 
         return response()->json([
             'message' => 'Data product berhasil diambil',

@@ -17,6 +17,16 @@ class AdminProductController extends Controller
         return view('web.admin.product.add');
     }
 
+    function edit($id) {
+        try {
+            $decId = Crypt::decrypt($id);
+
+            return view('web.admin.product.edit', compact('decId'));
+        } catch (DecryptException $th) {
+            return redirect()->route('admin.product.index');
+        }
+    }
+
     function detail($id) {
        try {
          $id = Crypt::decrypt($id);

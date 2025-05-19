@@ -19,5 +19,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/product', [App\Http\Controllers\Admin\AdminProductController::class,'index'])->name('admin.product');
         Route::get('/product/add', [App\Http\Controllers\Admin\AdminProductController::class,'add'])->name('admin.product.add');
         Route::get('/product/{id}', [App\Http\Controllers\Admin\AdminProductController::class,'detail'])->name('admin.product.detail');
+        Route::get('/product/edit/{id}', [App\Http\Controllers\Admin\AdminProductController::class,'edit'])->name('admin.product.edit');
+
+        Route::get('/payment/pending', [App\Http\Controllers\Admin\AdminPaymentController::class,'index'])->name('admin.payment.pending');
     });
 });

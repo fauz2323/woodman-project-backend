@@ -19,6 +19,8 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/category',[App\Http\Controllers\Api\ProductApiController::class,'getCategory']);
         Route::get('/product',[App\Http\Controllers\Api\ProductApiController::class,'getProduct']);
+        Route::post('/detail-product',[App\Http\Controllers\Api\ProductApiController::class,'getProductDetail']);
+
         Route::post('/product/detail',[App\Http\Controllers\Api\ProductApiController::class,'getProductDetail']);
         Route::post('/product/category',[App\Http\Controllers\Api\ProductApiController::class,'getProductByCategory']);
     });
