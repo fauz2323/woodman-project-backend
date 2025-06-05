@@ -26,6 +26,6 @@ class UserOrder extends Model
      */
     public function items()
     {
-        return $this->hasMany(UserOrderItem::class, 'user_id', 'id');
+        return $this->hasMany(UserOrderItem::class, 'user_order_id', 'id');
     }
 }

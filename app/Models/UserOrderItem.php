@@ -18,4 +18,14 @@ class UserOrderItem extends Model
     {
         return $this->belongsTo(UserOrder::class, 'user_order_id', 'id');
     }
+
+    /**
+     * Get the product that owns the UserOrderItem
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

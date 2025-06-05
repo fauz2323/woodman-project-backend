@@ -31,7 +31,7 @@
                                 <i class="ri-eye-line widget-icon"></i>
                             </div>
                             <h6 class="text-uppercase mt-0" title="Customers">Orders</h6>
-                            <h2 class="my-2">8,652</h2>
+                            <h2 class="my-2">{{ $order }}</h2>
                             <p class="mb-0">
                                 <span class="badge bg-white bg-opacity-10 me-1">2.97%</span>
                                 <span class="text-nowrap">Since last month</span>
@@ -46,8 +46,8 @@
                             <div class="float-end">
                                 <i class="ri-wallet-2-line widget-icon"></i>
                             </div>
-                            <h6 class="text-uppercase mt-0" title="Customers">Category</h6>
-                            <h2 class="my-2">$9,254.62</h2>
+                            <h6 class="text-uppercase mt-0" title="Customers">Order Pending</h6>
+                            <h2 class="my-2">{{ $pending }}</h2>
                             <p class="mb-0">
                                 <span class="badge bg-white bg-opacity-10 me-1">18.25%</span>
                                 <span class="text-nowrap">Since last month</span>
@@ -63,7 +63,7 @@
                                 <i class="ri-shopping-basket-line widget-icon"></i>
                             </div>
                             <h6 class="text-uppercase mt-0" title="Customers">Product</h6>
-                            <h2 class="my-2">753</h2>
+                            <h2 class="my-2">{{ $product }}</h2>
                             <p class="mb-0">
                                 <span class="badge bg-white bg-opacity-25 me-1">-5.75%</span>
                                 <span class="text-nowrap">Since last month</span>
@@ -79,7 +79,7 @@
                                 <i class="ri-group-2-line widget-icon"></i>
                             </div>
                             <h6 class="text-uppercase mt-0" title="Customers">Users</h6>
-                            <h2 class="my-2">63,154</h2>
+                            <h2 class="my-2">{{ $user }}</h2>
                             <p class="mb-0">
                                 <span class="badge bg-white bg-opacity-10 me-1">8.21%</span>
                                 <span class="text-nowrap">Since last month</span>

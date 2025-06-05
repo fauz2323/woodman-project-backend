@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable,HasApiTokens,HasRoles;
+    use HasFactory, Notifiable, HasApiTokens, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -56,5 +56,25 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(UserOrder::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get all of the cart for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cart()
+    {
+        return $this->hasMany(UserCart::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get the address associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function address()
+    {
+        return $this->hasOne(UserAddress::class, 'user_id', 'id');
     }
 }
