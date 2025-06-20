@@ -33,5 +33,6 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/make-order', [App\Http\Controllers\Api\UserOrderController::class, 'makeOrder']);
         Route::get('/get-order', [App\Http\Controllers\Api\UserOrderController::class, 'getOrders']);
+        Route::post('/upload-payment-order', [App\Http\Controllers\Api\UserOrderController::class, 'uploadPaymentOrder']);
     });
 });

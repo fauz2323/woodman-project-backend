@@ -87,6 +87,7 @@ class UserOrderController extends Controller
                             'price' => $item->product->price,
                         ];
                     }),
+                    'created_at' => $order->created_at->format('Y-m-d H:i:s'),
                 ];
             }),
         ]);
@@ -123,6 +124,34 @@ class UserOrderController extends Controller
                     ];
                 }),
             ],
+        ]);
+    }
+
+    function uploadPaymentOrder(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required|integer|exists:orders,id',
+            'payment_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
+        ]);
+
+        $order = UserOrder::where('order_number', $request->order_id)->first();
+
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+
+        $uuidImage = Uuid::uuid4();
+
+        $paymentProof = $request->file('payment_proof');
+        $paymentProof->storeAs('public/payment_proof', $uuidImage . '.' . $paymentProof->getClientOriginalExtension());
+
+        $order->payment_proof = $uuidImage . '.' . $paymentProof->getClientOriginalExtension();
+        $order->status = 'pending';
+        $order->save();
+
+        return response()->json([
+            'message' => 'Payment proof uploaded successfully',
+            'payment_proof' => $paymentProof->hashName(),
         ]);
     }
 }

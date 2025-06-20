@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('zip');
             $table->double('total');
+            $table->text('payment_proof')->nullable();
             $table->timestamps();
         });
     }
