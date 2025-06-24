@@ -14,17 +14,16 @@
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Woodman</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                <li class="breadcrumb-item active">Payment!</li>
+                                <li class="breadcrumb-item active">Detail Payment!</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Pending Payment!</h4>
+                        <h4 class="page-title">Detail Payment!</h4>
                     </div>
                 </div>
             </div>
             <!-- end page title -->
 
             <div class="row">
-                <livewire:dashboard.table.payment-table type="pending" />
             </div>
         </div>
         <!-- container -->

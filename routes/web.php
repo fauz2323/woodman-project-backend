@@ -22,5 +22,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/product/edit/{id}', [App\Http\Controllers\Admin\AdminProductController::class, 'edit'])->name('admin.product.edit');
 
         Route::get('/payment/pending', [App\Http\Controllers\Admin\AdminPaymentController::class, 'index'])->name('admin.payment.pending');
+        Route::get('/payment/waiting-to-process', [App\Http\Controllers\Admin\AdminPaymentController::class, 'waitingToProcess'])->name('admin.payment.waiting-to-process');
+        Route::get('/payment/detail/{id}', [App\Http\Controllers\Admin\AdminPaymentController::class, 'detail'])->name('admin.payment.detail');
     });
 });

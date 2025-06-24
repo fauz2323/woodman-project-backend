@@ -96,7 +96,7 @@ class UserOrderController extends Controller
     function getDetailOrder(Request $request)
     {
         $request->validate([
-            'order_id' => 'required|integer|exists:orders,id',
+            'order_id' => 'required',
         ]);
 
         $order = UserOrder::where('order_number', $request->order_id)
@@ -115,14 +115,16 @@ class UserOrderController extends Controller
             'order' => [
                 'order_number' => $order->order_number,
                 'status' => $order->status,
-                'total_price' => $order->total_price,
+                'total_price' => $order->total,
+                'payment_proof' => $order->payment_proof ?? '-',
                 'items' => $order->items->map(function ($item) {
                     return [
                         'product_name' => $item->product->name,
                         'quantity' => $item->quantity,
-                        'price' => $item->price,
+                        'price' => $item->product->price,
                     ];
                 }),
+                'created_at' => $order->created_at->format('Y-m-d H:i:s'),
             ],
         ]);
     }
@@ -130,7 +132,7 @@ class UserOrderController extends Controller
     function uploadPaymentOrder(Request $request)
     {
         $request->validate([
-            'order_id' => 'required|integer|exists:orders,id',
+            'order_id' => 'required',
             'payment_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
@@ -146,12 +148,11 @@ class UserOrderController extends Controller
         $paymentProof->storeAs('public/payment_proof', $uuidImage . '.' . $paymentProof->getClientOriginalExtension());
 
         $order->payment_proof = $uuidImage . '.' . $paymentProof->getClientOriginalExtension();
-        $order->status = 'pending';
+        $order->status = 'waiting';
         $order->save();
 
         return response()->json([
             'message' => 'Payment proof uploaded successfully',
-            'payment_proof' => $paymentProof->hashName(),
         ]);
     }
 }

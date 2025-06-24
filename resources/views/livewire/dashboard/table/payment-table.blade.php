@@ -2,7 +2,7 @@
     <div class="card-header">
         <div class="row">
             <div class="col">
-                <h4 class="header-title">Pending Payment List</h4>
+                <h4 class="header-title">{{ $type }} Payment List</h4>
             </div>
             <div class="col">
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
@@ -39,9 +39,13 @@
                             <td>{{ $payment->status }}</td>
                             <td>{{ $payment->created_at->format('d-M-y') }}</td>
                             <td>
-                                <a href="" class="text-reset fs-16 px-1"> <i class="ri-settings-3-line"></i></a>
-                                <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
-                                        class="ri-delete-bin-2-line"></i></a>
+                                @if ($payment->status == 'waiting')
+                                    <a href="{{ route('admin.payment.detail', Crypt::encrypt($payment->id)) }}"
+                                        class="text-reset fs-16 px-1"> <i class="ri-eye-line"></i></a>
+                                    <a href="#" class="text-reset fs-16 px-1"
+                                        wire:click="cancelOrder('{{ Crypt::encrypt($payment->id) }}')"> <i
+                                            class="ri-delete-bin-2-line"></i></a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
