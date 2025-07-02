@@ -15,7 +15,14 @@ class UserDataApiController extends Controller
         $userAddress = UserAddress::where('user_id', auth()->id())->first();
 
         if (!$userAddress) {
-            return response()->json(['message' => 'No address found'], 404);
+            return response()->json([
+                'name' => '-',
+                'phone' => '-',
+                'address' => '-',
+                'city' => '-',
+                'country' => '-',
+                'postal_code' => '-',
+            ]);
         }
 
         return response()->json([
