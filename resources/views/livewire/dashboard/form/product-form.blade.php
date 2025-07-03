@@ -7,8 +7,8 @@
                         @foreach ($listImages as $item)
                             <div class="col">
                                 <img src="{{ $item }}" class="rounded mx-auto d-block" style="width: 300px"
-                                alt="...">
-                            <small>*Image {{ $loop->iteration }}</small>
+                                    alt="...">
+                                <small>*Image {{ $loop->iteration }}</small>
                             </div>
                         @endforeach
                     </div>
