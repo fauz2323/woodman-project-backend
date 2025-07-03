@@ -64,9 +64,7 @@ class ProductForm extends Component
 
     public function save()
     {
-        // if ($this->images[0]['image'] == null) {
-        //     dd('null image 0');
-        // }
+
 
         // $this->validate([
         //     'name' => 'required',
@@ -80,56 +78,55 @@ class ProductForm extends Component
         // ]);
 
 
-        // $saveFileService = new FileServices();
+        $saveFileService = new FileServices();
 
         if ($this->isEdited == false) {
             if ($this->images[0]['image'] == null) {
-                // $this->addError('images.0.image', 'Image is required');
-                dd('null satu');
+                $this->addError('images.0.image', 'Image is required');
+                return;
             }
         } else {
             if ($this->images[0]['image'] != null) {
-                // $product = Product::where('uuid', $this->uuid)->first();
-                dd('null dua');
-                // $product->images()->delete();
+                $product = Product::where('uuid', $this->uuid)->first();
+                $product->images()->delete();
             }
         }
 
-        // foreach ($this->images as $key => $image) {
-        //     if ($image['image'] != null) {
-        //         $this->validate([
-        //             'images.' . $key . '.image' => 'image|max:1024|mimes:png,jpg,jpeg',
-        //         ]);
-        //     }
-        // }
+        foreach ($this->images as $key => $image) {
+            if ($image['image'] != null) {
+                $this->validate([
+                    'images.' . $key . '.image' => 'image|max:1024|mimes:png,jpg,jpeg',
+                ]);
+            }
+        }
 
-        // // save to database
-        // if ($this->isEdited == false) {
-        //     $product = new Product();
-        //     $product->uuid = Uuid::uuid4();
-        // }
+        // save to database
+        if ($this->isEdited == false) {
+            $product = new Product();
+            $product->uuid = Uuid::uuid4();
+        }
 
-        // $product->name = $this->name;
-        // $product->description = $this->description;
-        // $product->price = $this->price;
-        // $product->stock = $this->stock;
-        // $product->dimension = $this->dimension;
-        // $product->weight = $this->weight;
-        // $product->height = $this->height;
-        // $product->material = $this->material;
-        // $product->save();
+        $product->name = $this->name;
+        $product->description = $this->description;
+        $product->price = $this->price;
+        $product->stock = $this->stock;
+        $product->dimension = $this->dimension;
+        $product->weight = $this->weight;
+        $product->height = $this->height;
+        $product->material = $this->material;
+        $product->save();
 
-        // // save images
-        // foreach ($this->images as $key) {
-        //     if ($key['image'] != null) {
-        //         $path = $saveFileService->saveFile($key['image']);
+        // save images
+        foreach ($this->images as $key) {
+            if ($key['image'] != null) {
+                $path = $saveFileService->saveFile($key['image']);
 
-        //         $product->images()->create([
-        //             'path' => $path,
-        //         ]);
-        //     }
-        // }
+                $product->images()->create([
+                    'path' => $path,
+                ]);
+            }
+        }
 
-        // return redirect()->route('admin.product')->with('success', 'Product has been saved');
+        return redirect()->route('admin.product')->with('success', 'Product has been saved');
     }
 }
