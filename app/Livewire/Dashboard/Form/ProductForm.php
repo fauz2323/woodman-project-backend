@@ -66,16 +66,16 @@ class ProductForm extends Component
     {
 
 
-        // $this->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'price' => 'required',
-        //     'stock' => 'required',
-        //     'dimension' => 'required',
-        //     'weight' => 'required',
-        //     'height' => 'required',
-        //     'material' => 'required',
-        // ]);
+        $this->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            'dimension' => 'required',
+            'weight' => 'required',
+            'height' => 'required',
+            'material' => 'required',
+        ]);
 
 
         $saveFileService = new FileServices();
